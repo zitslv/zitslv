@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+    <title>ZiTs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="zits.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="zits">
+        <div class="card">
+
+            <!-- زر اللغة -->
+            <div class="top-buttons">
+                <button class="about-btn" id="openAbout">
+                    👤
+                </button>
+                <button class="lang-btn" onclick="toggleLang()">EN</button>
+            </div>
+            <!-- النافذة -->
+            <div class="about-popup" id="aboutPopup">
+
+                <div class="popup-box">
+
+                    <!-- زر الإغلاق -->
+                    <button class="close-popup" id="closeAbout">
+                        ✕
+                    </button>
+
+                    <h2 id="meee">من أنا ؟</h2>
+
+                    <p id="aboutText">
+                        مرحبا! أنا ZiTs، صانع محتوى ألعاب من السعودية. أصنع محتوى على يوتيوب وتيك توك. 🎮
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- الصورة -->
+            <div class="avatar-wrap">
+                <div class="orbit-ring"></div>
+                <img class="avatar" src="photo_2026-04-23_19-03-08.jpg" alt="zits avatar">
+            </div>
+
+            <!-- الاسم -->
+            <h1>ZiTs</h1>
+
+            <!-- إحصائيات -->
+            <section class="social-stats">
+                <div class="stat-card youtube">
+                    <div class="glow"></div>
+                    <div class="platform">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span>يوتيوب</span>
+                    </div>
+                    <h3 id="yt-count">0</h3>
+                </div>
+                <div class="stat-card tiktok">
+                    <div class="glow"></div>
+                    <div class="platform">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span>تيك توك</span>
+                    </div>
+                    <h3 id="tt-count">0</h3>
+                </div>
+                <div class="stat-card instagram">
+                    <div class="glow"></div>
+                    <div class="platform">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>انستقرام</span>
+                    </div>
+                    <h3 id="ig-count">0</h3>
+                </div>
+            </section>
+
+            <!-- النص -->
+            <p id="typing"></p>
+
+            <!-- الروابط -->
+            <div class="buttons">
+                <a class="links str" href="https://creators.sa/zitslv">
+                    <div class="link-content">
+                        <img src="cash_icon-icons.com_51090.png" alt="Support">
+                        رابط الدعم المادي
+                    </div>
+                    <span class="arrow">›</span>
+                </a>
+                <a class="links yt" href="https://youtube.com/@zitslv">
+                    <div class="link-content">
+                        <img src="YouTube_23392.png" alt="YouTube">
+                        يوتيوب
+                    </div>
+                    <span class="arrow">›</span>
+                </a>
+                <a class="links tw" href="https://www.twitch.tv/zitslv">
+                    <div class="link-content">
+                        <img src="twitch_icon_146123.png" alt="Twitch">
+                        تويتش
+                    </div>
+                    <span class="arrow">›</span>
+                </a>
+                <a class="links ig" href="https://www.instagram.com/zitslv/">
+                    <div class="link-content">
+                        <img src="Instagram_icon-icons.com_66804.png" alt="Instagram">
+                        انستقرام
+                    </div>
+                    <span class="arrow">›</span>
+                </a>
+                <a class="links tt" href="https://tiktok.com/@zitslv">
+                    <div class="link-content">
+                        <img src="media_social_tiktok_icon_124256.png" alt="TikTok">
+                        تيك توك
+                    </div>
+                    <span class="arrow">›</span>
+                </a>
+                <a class="links x" href="https://x.com/zitslv">
+                    <div class="link-content">
+                        <img src="268058_x-logo-icon.png" alt="X">
+                        إكس (تويتر)
+                    </div>
+                    <span class="arrow">›</span>
+                </a>
+            </div>
+
+            <!-- زر المشاركة -->
+            <button class="share-btn" onclick="shareMe()">
+                🔗 شارك موقعي
+            </button>
+
+        </div>
+    </div>
+
+    <script src="zits.js"></script>
+</body>
+
+</html>

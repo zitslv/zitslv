@@ -1,0 +1,682 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   ROOT
+========================= */
+
+:root {
+  --dark: #080c14;
+  --card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+  --white: #ffffff;
+}
+
+/* =========================
+   HTML & BODY
+========================= */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: "Tajawal", sans-serif;
+  background: linear-gradient(125deg, #080c14, #0d1b3e, #080c14, #0a1128);
+  background-size: 400% 400%;
+  animation: bgMove 10s ease infinite;
+  overflow: hidden;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.card {
+  width: min(420px, 92vw); /* ← مرن على كل الشاشات */
+  padding: 28px 22px;
+  border-radius: 24px;
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(77, 159, 255, 0.15);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(77, 159, 255, 0.05);
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+  position: relative;
+}
+
+/* =========================
+   AVATAR WRAP
+========================= */
+
+.avatar-wrap {
+  position: relative;
+  width: 115px;
+  height: 115px;
+  margin: 0 auto 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  isolation: isolate;
+}
+
+.avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================
+   ORBIT RING
+========================= */
+
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #4d9fff,
+    #0033ff,
+    #00f5ff,
+    transparent 60%,
+    #4d9fff
+  );
+  animation: spin 2.5s linear infinite;
+  z-index: 1;
+}
+
+.orbit-ring::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #080c14;
+  z-index: 2;
+}
+
+.orbit-ring::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 40%,
+    #4d9fff,
+    transparent 60%
+  );
+  animation: spin 2.5s linear infinite reverse;
+  filter: blur(4px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+  background: conic-gradient(from 0deg, #4d9fff, #0033ff, #4d9fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   TYPING TEXT
+========================= */
+
+#typing {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem; /* ← زود من 0.82rem */
+  font-weight: 600; /* ← أضف هذا */
+  min-height: 20px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   SOCIAL STATS
+========================= */
+
+.social-stats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stat-card {
+  position: relative;
+  flex: 1;
+  padding: 10px 4px;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* Glow */
+.glow {
+  position: absolute;
+  inset: -70%;
+  opacity: 0.08;
+  filter: blur(30px);
+  z-index: 0;
+  animation: rotateGlow 8s linear infinite;
+}
+
+/* Shine on hover */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.6s;
+}
+
+.stat-card:hover::before {
+  left: 150%;
+}
+
+.platform {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.platform i {
+  font-size: 0.75rem;
+}
+.platform span {
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+}
+
+.stat-card h3 {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+/* Platform Colors */
+.youtube {
+  border: 1px solid rgba(255, 0, 0, 0.4);
+}
+.youtube .glow {
+  background: red;
+}
+.youtube i,
+.youtube h3 {
+  color: #ff4444;
+}
+
+.tiktok {
+  border: 1px solid rgba(0, 242, 234, 0.4);
+}
+.tiktok .glow {
+  background: #00f2ea;
+}
+.tiktok i,
+.tiktok h3 {
+  color: #00f2ea;
+}
+
+.instagram {
+  border: 1px solid rgba(255, 79, 216, 0.4);
+}
+.instagram .glow {
+  background: #ff4fd8;
+}
+.instagram i,
+.instagram h3 {
+  color: #ff4fd8;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.links {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.25s;
+}
+
+.links:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.links img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.arrow {
+  opacity: 0.45;
+  font-size: 1rem;
+  transition: 0.25s;
+}
+
+.links:hover .arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Hover Colors */
+.str:hover {
+  border-color: #56ff4d;
+  box-shadow: 0 0 15px rgba(77, 255, 77, 0.25);
+}
+.yt:hover {
+  border-color: #923131;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+}
+.tw:hover {
+  border-color: #9146ff;
+  box-shadow: 0 0 15px rgba(145, 70, 255, 0.25);
+}
+.ig:hover {
+  border-color: #e1306c;
+  box-shadow: 0 0 15px rgba(225, 48, 108, 0.25);
+}
+.tt:hover {
+  border-color: #00f2ea;
+  box-shadow: 0 0 15px rgba(0, 242, 234, 0.25);
+}
+.x:hover {
+  border-color: white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* iPad */
+@media (max-width: 768px) {
+  .card {
+    padding: 24px 20px;
+  }
+  .stat-card h3 {
+    font-size: 0.88rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+  .card {
+    padding: 20px 16px;
+  }
+  .avatar-wrap {
+    width: 100px;
+    height: 100px;
+  }
+  .avatar {
+    width: 82px;
+    height: 82px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  .social-stats {
+    gap: 6px;
+  }
+  .stat-card h3 {
+    font-size: 0.82rem;
+  }
+  .links {
+    padding: 10px 12px;
+  }
+  .link-content {
+    font-size: 0.82rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .card {
+    padding: 16px 12px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  .platform span {
+    font-size: 0.48rem;
+  }
+  .stat-card h3 {
+    font-size: 0.75rem;
+  }
+  .link-content {
+    font-size: 0.78rem;
+  }
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.share-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Tajawal", sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.share-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+}
+.lang-btn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Tajawal", sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+.about-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Tajawal", sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.about-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+/* =========================
+   POPUP
+========================= */
+
+.about-popup{
+  position:fixed;
+
+  inset:0;
+
+  background:
+  rgba(0,0,0,.55);
+
+  backdrop-filter:blur(8px);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.3s;
+
+  z-index:9999;
+}
+
+/* Active */
+
+.about-popup.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* =========================
+   POPUP BOX
+========================= */
+
+.popup-box{
+  position:relative;
+
+  width:360px;
+
+  padding:24px;
+
+  border-radius:24px;
+
+  background:
+  rgba(15,23,42,.92);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+  0 0 40px rgba(0,0,0,.45);
+
+  text-align:center;
+
+  animation:popupShow .35s ease;
+}
+
+/* Title */
+
+.popup-box h2{
+  color:white;
+
+  margin-bottom:14px;
+
+  font-size:1.4rem;
+}
+
+/* Text */
+
+.popup-box p{
+  color:rgba(255,255,255,.72);
+
+  line-height:1.7;
+
+  font-size:.9rem;
+
+  border:none;
+
+  margin:0;
+
+  padding:0;
+}
+
+/* Close Button */
+
+.close-popup{
+  position:absolute;
+
+  top:12px;
+  right:12px;
+
+  width:32px;
+  height:32px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:
+  rgba(255,255,255,.05);
+
+  color:white;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.close-popup:hover{
+  background:
+  rgba(255,255,255,.12);
+
+  transform:rotate(90deg);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes popupShow{
+
+  from{
+    opacity:0;
+    transform:
+    translateY(20px)
+    scale(.95);
+  }
+
+  to{
+    opacity:1;
+    transform:
+    translateY(0)
+    scale(1);
+  }
+
+}
+#aboutText {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem; /* ← زود من 0.82rem */
+  font-weight: 600; /* ← أضف هذا */
+  min-height: 20px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+}
